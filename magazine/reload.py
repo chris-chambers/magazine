@@ -95,7 +95,7 @@ def upgrade_method(
     if not ismethod(old) or not ismethod(new):
         return False
 
-    return upgrade_function(old.__func__, new.__func, upgraders)
+    return upgrade_function(old.__func__, new.__func__, upgraders)
 
 
 def upgrade_class(old: type, new: type, upgraders: Iterable[UpgradeFn]) -> bool:
@@ -176,7 +176,7 @@ UPGRADERS = [
     upgrade_class,
     upgrade_function,
     upgrade_property,
-    upgrade_function,
+    upgrade_method,
 ]
 
 
