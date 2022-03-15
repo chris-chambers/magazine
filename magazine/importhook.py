@@ -44,7 +44,8 @@ class _Finder(importlib.abc.MetaPathFinder):
             spec = importlib.util.find_spec(fullname)
             if not spec:
                 return None
-            spec.loader = _Loader(spec.loader, self.callback)
+            if spec.loader:
+                spec.loader = _Loader(spec.loader, self.callback)
             return spec
         finally:
             self.resolving.pop()
